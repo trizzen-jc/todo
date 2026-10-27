@@ -39,18 +39,16 @@ export default function WeekGrid({ weeklyPlanId }: { weeklyPlanId: string }) {
         <div
           key={label}
           onClick={() => setActiveDay(idx)}
-          className="min-h-[110px] cursor-pointer rounded-lg border border-black/10 p-2 hover:bg-black/5"
+          className="min-h-[110px] cursor-pointer rounded-xl border border-line bg-surface p-2 shadow-card transition-shadow hover:shadow-md"
         >
-          <div className="mb-1 text-xs font-medium text-foreground/50">
-            {label}
-          </div>
+          <div className="mb-1 text-xs font-medium text-muted">{label}</div>
           <div className="flex flex-col gap-1">
             {dayTodos
               .filter((t) => t.dayOfWeek === idx)
               .map((t) => (
                 <div
                   key={t._id}
-                  className="rounded bg-black/5 px-2 py-1 text-xs"
+                  className="rounded-md bg-primary-50 px-2 py-1 text-xs text-primary-700 dark:bg-primary-500/15 dark:text-primary-300"
                 >
                   {t.title}
                 </div>
@@ -68,7 +66,7 @@ export default function WeekGrid({ weeklyPlanId }: { weeklyPlanId: string }) {
               }}
               onBlur={() => handleAdd(idx)}
               placeholder="할일 입력 후 Enter"
-              className="mt-1 w-full rounded border border-black/15 px-1 py-0.5 text-xs"
+              className="mt-1 w-full rounded-md border border-line bg-surface px-1 py-0.5 text-xs text-foreground focus:border-primary-500 focus:outline-none"
             />
           )}
         </div>

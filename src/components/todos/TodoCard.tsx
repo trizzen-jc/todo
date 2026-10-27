@@ -37,7 +37,7 @@ export default function TodoCard({ todo }: { todo: Todo }) {
       style={style}
       {...attributes}
       {...listeners}
-      className="cursor-grab rounded-lg border border-black/10 bg-white p-3 text-sm shadow-sm active:cursor-grabbing"
+      className="cursor-grab rounded-xl border border-line bg-surface p-3 text-sm text-foreground shadow-card transition-shadow active:cursor-grabbing"
     >
       <div className="flex items-center justify-between gap-2">
         <span>{todo.title}</span>
@@ -46,7 +46,9 @@ export default function TodoCard({ todo }: { todo: Todo }) {
       {todo.dueDate && (
         <p
           className={`mt-1 text-xs ${
-            overdue ? "font-medium text-red-600" : "text-foreground/50"
+            overdue
+              ? "font-medium text-red-600 dark:text-red-400"
+              : "text-muted"
           }`}
         >
           마감 {new Date(todo.dueDate).toISOString().slice(0, 10)}

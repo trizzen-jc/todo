@@ -22,10 +22,10 @@ export default function KanbanColumn({
   return (
     <div
       ref={setNodeRef}
-      className="flex min-h-[300px] flex-col gap-2 rounded-xl border border-black/10 bg-black/[.02] p-3"
+      className="flex min-h-[300px] flex-col gap-2 rounded-2xl border border-line bg-foreground/[.025] p-3"
     >
-      <h2 className="text-sm font-semibold text-foreground/70">
-        {label} ({todos.length})
+      <h2 className="text-sm font-semibold text-muted">
+        {label} <span className="text-muted/70">({todos.length})</span>
       </h2>
       <SortableContext
         items={todos.map((t) => t._id)}

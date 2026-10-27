@@ -23,33 +23,31 @@ export default function WeeklyListPage() {
 
   return (
     <div className="flex flex-col gap-6">
-      <h1 className="text-xl font-semibold">주간 계획</h1>
+      <h1 className="text-xl font-semibold tracking-tight text-foreground">
+        주간 계획
+      </h1>
 
       {!thisWeekPlan && (
         <WeeklyPlanForm onCreated={(id) => router.push(`/weekly/${id}`)} />
       )}
 
       <div className="flex flex-col gap-2">
-        <h2 className="text-sm font-medium text-foreground/60">최근 4주</h2>
+        <h2 className="text-sm font-medium text-muted">최근 4주</h2>
         {weeklyPlans.map((w) => {
           const goal = goals.find((g) => g._id === w.goalId);
           return (
             <Link
               key={w._id}
               href={`/weekly/${w._id}`}
-              className="rounded-lg border border-black/10 bg-white p-3 text-sm hover:bg-black/5"
+              className="rounded-xl border border-line bg-surface p-3 text-sm text-foreground shadow-card transition-shadow hover:shadow-md"
             >
               {formatDate(w.weekStart)} 주 — 목표 {w.goals.length}개
-              {goal && (
-                <span className="ml-2 text-foreground/50">
-                  ({goal.title})
-                </span>
-              )}
+              {goal && <span className="ml-2 text-muted">({goal.title})</span>}
             </Link>
           );
         })}
         {weeklyPlans.length === 0 && (
-          <p className="text-sm text-foreground/50">아직 계획이 없어요.</p>
+          <p className="text-sm text-muted">아직 계획이 없어요.</p>
         )}
       </div>
     </div>

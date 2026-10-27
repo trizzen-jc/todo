@@ -14,19 +14,21 @@ export default function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="hidden w-56 shrink-0 border-r border-black/10 bg-gray-50 p-4 sm:block">
+    <aside className="hidden w-56 shrink-0 border-r border-line bg-surface p-4 sm:block">
       <nav className="flex flex-col gap-1">
         {NAV_ITEMS.map((item) => {
           const active =
-            item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
+            item.href === "/"
+              ? pathname === "/"
+              : pathname.startsWith(item.href);
           return (
             <Link
               key={item.href}
               href={item.href}
               className={`rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
                 active
-                  ? "bg-black text-white"
-                  : "text-foreground/70 hover:bg-black/5"
+                  ? "bg-primary-600 text-white shadow-sm"
+                  : "text-muted hover:bg-foreground/5 hover:text-foreground"
               }`}
             >
               {item.label}

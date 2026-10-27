@@ -3,7 +3,7 @@ import ProgressBar from "@/components/shared/ProgressBar";
 export default function GoalProgress({ progress }: { progress: number }) {
   return (
     <div className="mt-2">
-      <div className="flex items-center justify-between text-xs text-foreground/50">
+      <div className="flex items-center justify-between text-xs text-muted">
         <span>진행률</span>
         <span>{progress}%</span>
       </div>

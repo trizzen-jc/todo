@@ -14,11 +14,11 @@ export default function Modal({
   if (!open) return null;
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/40"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 backdrop-blur-sm"
       onClick={onClose}
     >
       <div
-        className="w-full max-w-md rounded-xl bg-white p-6 shadow-lg"
+        className="w-full max-w-md rounded-2xl border border-line bg-surface p-6 shadow-card"
         onClick={(e) => e.stopPropagation()}
       >
         {children}

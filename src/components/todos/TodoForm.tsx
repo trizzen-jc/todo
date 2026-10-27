@@ -6,6 +6,9 @@ import { generateKeyBetween } from "@/lib/fractionalIndex";
 import { formatDate } from "@/lib/utils";
 import { Priority } from "@/types";
 
+const fieldClass =
+  "rounded-lg border border-line bg-surface px-3 py-2 text-sm text-foreground placeholder:text-muted focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/20";
+
 export default function TodoForm() {
   const { todos, addTodo, weeklyPlans, goals, fetchWeeklyPlans, fetchGoals } =
     useAppStore();
@@ -49,9 +52,9 @@ export default function TodoForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex flex-col gap-2 rounded-xl border border-black/10 bg-white p-3"
+      className="flex flex-col gap-2 rounded-2xl border border-line bg-surface p-3 shadow-card"
     >
-      {error && <p className="text-sm text-red-600">{error}</p>}
+      {error && <p className="text-sm text-red-600 dark:text-red-400">{error}</p>}
       <div className="flex flex-wrap items-center gap-2">
         <input
           value={title}
@@ -60,12 +63,12 @@ export default function TodoForm() {
             if (error) setError("");
           }}
           placeholder="새 할일 제목"
-          className="min-w-[160px] flex-1 rounded-lg border border-black/15 px-3 py-2 text-sm"
+          className={`min-w-[160px] flex-1 ${fieldClass}`}
         />
         <select
           value={priority}
           onChange={(e) => setPriority(e.target.value as Priority)}
-          className="rounded-lg border border-black/15 px-2 py-2 text-sm"
+          className={fieldClass}
         >
           <option value="high">우선순위: 높음</option>
           <option value="medium">우선순위: 보통</option>
@@ -75,12 +78,12 @@ export default function TodoForm() {
           type="date"
           value={dueDate}
           onChange={(e) => setDueDate(e.target.value)}
-          className="rounded-lg border border-black/15 px-2 py-2 text-sm"
+          className={fieldClass}
         />
         <select
           value={weeklyPlanId}
           onChange={(e) => setWeeklyPlanId(e.target.value)}
-          className="rounded-lg border border-black/15 px-2 py-2 text-sm"
+          className={fieldClass}
         >
           <option value="">주간계획 연결 안 함</option>
           {weeklyPlans.map((w) => (
@@ -92,7 +95,7 @@ export default function TodoForm() {
         <select
           value={goalId}
           onChange={(e) => setGoalId(e.target.value)}
-          className="rounded-lg border border-black/15 px-2 py-2 text-sm"
+          className={fieldClass}
         >
           <option value="">목표 연결 안 함</option>
           {goals.map((g) => (
@@ -103,7 +106,7 @@ export default function TodoForm() {
         </select>
         <button
           type="submit"
-          className="rounded-lg bg-black px-3 py-2 text-sm text-white hover:bg-black/80"
+          className="rounded-lg bg-primary-600 px-3 py-2 text-sm font-medium text-white shadow-sm transition-colors hover:bg-primary-700"
         >
           추가
         </button>

@@ -8,8 +8,15 @@ import Modal from "@/components/shared/Modal";
 import { Goal } from "@/types";
 
 export default function GoalsPage() {
-  const { goals, fetchGoals, addGoal, updateGoal, deleteGoal, todos, fetchTodos } =
-    useAppStore();
+  const {
+    goals,
+    fetchGoals,
+    addGoal,
+    updateGoal,
+    deleteGoal,
+    todos,
+    fetchTodos,
+  } = useAppStore();
   const [modalOpen, setModalOpen] = useState(false);
   const [editing, setEditing] = useState<Goal | null>(null);
 
@@ -34,13 +41,15 @@ export default function GoalsPage() {
   return (
     <div className="flex flex-col gap-4">
       <div className="flex items-center justify-between">
-        <h1 className="text-xl font-semibold">1년 목표</h1>
+        <h1 className="text-xl font-semibold tracking-tight text-foreground">
+          1년 목표
+        </h1>
         <button
           onClick={() => {
             setEditing(null);
             setModalOpen(true);
           }}
-          className="rounded-lg bg-black px-3 py-1.5 text-sm text-white hover:bg-black/80"
+          className="rounded-lg bg-primary-600 px-3 py-1.5 text-sm font-medium text-white shadow-sm transition-colors hover:bg-primary-700"
         >
           + 새 목표
         </button>
@@ -62,7 +71,7 @@ export default function GoalsPage() {
       </div>
 
       {goals.length === 0 && (
-        <p className="text-sm text-foreground/50">
+        <p className="text-sm text-muted">
           아직 등록된 목표가 없어요. &quot;+ 새 목표&quot;로 추가해보세요.
         </p>
       )}
