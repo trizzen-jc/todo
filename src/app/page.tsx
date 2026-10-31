@@ -47,27 +47,27 @@ export default function DashboardPage() {
       <Suspense fallback={null}>
         <NeedLoginBanner />
       </Suspense>
-      <h1 className="text-xl font-semibold tracking-tight text-foreground">
+      <h1 className="text-[22px] font-medium tracking-tight text-foreground">
         대시보드
       </h1>
 
       {!plan ? (
-        <div className="rounded-2xl border border-line bg-surface p-4 text-sm text-muted shadow-card">
+        <div className="rounded-md border border-line bg-surface p-4 text-[14px] text-muted">
           아직 이번 주 계획이 없어요.{" "}
           <Link
             href="/weekly"
-            className="font-medium text-primary-600 underline-offset-2 hover:underline dark:text-primary-400"
+            className="font-medium text-foreground underline underline-offset-2"
           >
             주간 계획 만들러 가기
           </Link>
         </div>
       ) : (
-        <div className="rounded-2xl border border-line bg-surface p-4 shadow-card">
+        <div className="rounded-md border border-line bg-surface p-4">
           <div className="flex items-center justify-between">
-            <h2 className="font-medium text-foreground">
+            <h2 className="text-[16px] font-semibold text-foreground">
               {formatDate(plan.weekStart)} 주 계획
             </h2>
-            <span className="text-sm text-muted">
+            <span className="text-[14px] text-muted">
               진행률 {progress}% ({doneCount}/{plan.goals.length})
             </span>
           </div>
@@ -84,7 +84,7 @@ export default function DashboardPage() {
             ))}
           </div>
           {plan.memo && (
-            <p className="mt-3 whitespace-pre-wrap rounded-lg bg-foreground/5 p-2 text-sm text-muted">
+            <p className="mt-3 whitespace-pre-wrap rounded-sm bg-surface-soft p-2 text-[14px] text-muted">
               {plan.memo}
             </p>
           )}
@@ -92,28 +92,30 @@ export default function DashboardPage() {
       )}
 
       <div className="grid grid-cols-3 gap-3">
-        <div className="rounded-2xl border border-line bg-surface p-4 text-center shadow-card">
+        <div className="rounded-md border border-line bg-surface p-4 text-center">
           <div className="text-2xl font-semibold text-foreground">
             {statusCounts.todo}
           </div>
-          <div className="text-xs text-muted">할 일</div>
+          <div className="text-[13px] text-muted">할 일</div>
         </div>
-        <div className="rounded-2xl border border-line bg-surface p-4 text-center shadow-card">
+        <div className="rounded-md border border-line bg-surface p-4 text-center">
           <div className="text-2xl font-semibold text-foreground">
             {statusCounts.doing}
           </div>
-          <div className="text-xs text-muted">진행 중</div>
+          <div className="text-[13px] text-muted">진행 중</div>
         </div>
-        <div className="rounded-2xl border border-line bg-surface p-4 text-center shadow-card">
+        <div className="rounded-md border border-line bg-surface p-4 text-center">
           <div className="text-2xl font-semibold text-foreground">
             {statusCounts.done}
           </div>
-          <div className="text-xs text-muted">완료</div>
+          <div className="text-[13px] text-muted">완료</div>
         </div>
       </div>
 
       <div>
-        <h2 className="mb-2 text-sm font-medium text-muted">1년 목표</h2>
+        <h2 className="mb-2 text-[16px] font-medium text-foreground">
+          1년 목표
+        </h2>
         <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
           {goals.map((g) => {
             const linkedCount = todos.filter(
@@ -122,7 +124,7 @@ export default function DashboardPage() {
             return (
               <div
                 key={g._id}
-                className="rounded-2xl border border-line bg-surface p-3 text-sm shadow-card"
+                className="rounded-md border border-line bg-surface p-3 text-[14px]"
               >
                 <span className="font-medium text-foreground">
                   {g.title}
@@ -134,7 +136,7 @@ export default function DashboardPage() {
             );
           })}
           {goals.length === 0 && (
-            <p className="text-sm text-muted">등록된 목표가 없어요.</p>
+            <p className="text-[14px] text-muted">등록된 목표가 없어요.</p>
           )}
         </div>
       </div>

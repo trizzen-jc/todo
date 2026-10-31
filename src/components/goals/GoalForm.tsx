@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Goal } from "@/types";
 
 const inputClass =
-  "rounded-lg border border-line bg-surface px-3 py-2 text-sm text-foreground placeholder:text-muted focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/20";
+  "rounded-sm border border-line bg-surface px-3 py-3 text-[14px] text-foreground placeholder:text-muted focus:border-2 focus:border-foreground focus:outline-none";
 
 export default function GoalForm({
   initial,
@@ -27,7 +27,7 @@ export default function GoalForm({
       }}
       className="flex flex-col gap-3"
     >
-      <h2 className="text-lg font-semibold text-foreground">
+      <h2 className="text-[20px] font-semibold text-foreground">
         {initial ? "목표 수정" : "새 1년 목표"}
       </h2>
       <input
@@ -48,13 +48,13 @@ export default function GoalForm({
         <button
           type="button"
           onClick={onCancel}
-          className="rounded-lg px-3 py-1.5 text-sm text-muted transition-colors hover:bg-foreground/5"
+          className="rounded-sm px-4 py-2.5 text-[14px] font-medium text-foreground transition-colors hover:bg-surface-soft"
         >
           취소
         </button>
         <button
           type="submit"
-          className="rounded-lg bg-primary-600 px-3 py-1.5 text-sm font-medium text-white shadow-sm transition-colors hover:bg-primary-700"
+          className="rounded-sm bg-primary px-4 py-2.5 text-[14px] font-medium text-white transition-colors hover:bg-primary-hover"
         >
           저장
         </button>

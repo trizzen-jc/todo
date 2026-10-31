@@ -5,7 +5,7 @@ import { useAppStore } from "@/store";
 import { getWeekStart, formatDate } from "@/lib/utils";
 
 const inputClass =
-  "rounded-lg border border-line bg-surface px-3 py-2 text-sm text-foreground placeholder:text-muted focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/20";
+  "rounded-sm border border-line bg-surface px-3 py-3 text-[14px] text-foreground placeholder:text-muted focus:border-2 focus:border-foreground focus:outline-none";
 
 export default function WeeklyPlanForm({
   onCreated,
@@ -50,13 +50,15 @@ export default function WeeklyPlanForm({
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex flex-col gap-3 rounded-2xl border border-line bg-surface p-4 shadow-card"
+      className="flex flex-col gap-3 rounded-md border border-line bg-surface p-4"
     >
-      <h2 className="font-semibold text-foreground">이번 주 계획 만들기</h2>
-      {error && <p className="text-sm text-red-600 dark:text-red-400">{error}</p>}
+      <h2 className="text-[16px] font-semibold text-foreground">
+        이번 주 계획 만들기
+      </h2>
+      {error && <p className="text-[14px] text-error">{error}</p>}
 
       <div className="flex flex-col gap-2">
-        <label className="text-sm text-muted">주간 목표 (최대 5개)</label>
+        <label className="text-[14px] text-muted">주간 목표 (최대 5개)</label>
         {goalTexts.map((text, i) => (
           <input
             key={i}
@@ -70,7 +72,7 @@ export default function WeeklyPlanForm({
           <button
             type="button"
             onClick={addGoalField}
-            className="self-start text-sm font-medium text-primary-600 hover:underline dark:text-primary-400"
+            className="self-start text-[14px] font-medium text-foreground hover:underline"
           >
             + 목표 추가
           </button>
@@ -78,7 +80,7 @@ export default function WeeklyPlanForm({
       </div>
 
       <div className="flex flex-col gap-1">
-        <label className="text-sm text-muted">연결할 1년 목표 (선택)</label>
+        <label className="text-[14px] text-muted">연결할 1년 목표 (선택)</label>
         <select
           value={goalId}
           onChange={(e) => setGoalId(e.target.value)}
@@ -94,7 +96,7 @@ export default function WeeklyPlanForm({
       </div>
 
       <div className="flex flex-col gap-1">
-        <label className="text-sm text-muted">주간 메모</label>
+        <label className="text-[14px] text-muted">주간 메모</label>
         <textarea
           value={memo}
           onChange={(e) => setMemo(e.target.value)}
@@ -105,7 +107,7 @@ export default function WeeklyPlanForm({
 
       <button
         type="submit"
-        className="self-end rounded-lg bg-primary-600 px-3 py-1.5 text-sm font-medium text-white shadow-sm transition-colors hover:bg-primary-700"
+        className="self-end flex h-12 items-center rounded-sm bg-primary px-6 text-[14px] font-medium text-white transition-colors hover:bg-primary-hover"
       >
         생성
       </button>

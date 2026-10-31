@@ -41,7 +41,7 @@ export default function GoalsPage() {
   return (
     <div className="flex flex-col gap-4">
       <div className="flex items-center justify-between">
-        <h1 className="text-xl font-semibold tracking-tight text-foreground">
+        <h1 className="text-[22px] font-medium tracking-tight text-foreground">
           1년 목표
         </h1>
         <button
@@ -49,7 +49,7 @@ export default function GoalsPage() {
             setEditing(null);
             setModalOpen(true);
           }}
-          className="rounded-lg bg-primary-600 px-3 py-1.5 text-sm font-medium text-white shadow-sm transition-colors hover:bg-primary-700"
+          className="flex h-12 items-center rounded-sm bg-primary px-6 text-[14px] font-medium text-white transition-colors hover:bg-primary-hover"
         >
           + 새 목표
         </button>
@@ -71,7 +71,7 @@ export default function GoalsPage() {
       </div>
 
       {goals.length === 0 && (
-        <p className="text-sm text-muted">
+        <p className="text-[14px] text-muted">
           아직 등록된 목표가 없어요. &quot;+ 새 목표&quot;로 추가해보세요.
         </p>
       )}

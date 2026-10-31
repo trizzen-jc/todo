@@ -7,7 +7,7 @@ import { formatDate } from "@/lib/utils";
 import { Priority } from "@/types";
 
 const fieldClass =
-  "rounded-lg border border-line bg-surface px-3 py-2 text-sm text-foreground placeholder:text-muted focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/20";
+  "rounded-sm border border-line bg-surface px-3 py-3 text-[14px] text-foreground placeholder:text-muted focus:border-2 focus:border-foreground focus:outline-none";
 
 export default function TodoForm() {
   const { todos, addTodo, weeklyPlans, goals, fetchWeeklyPlans, fetchGoals } =
@@ -52,9 +52,9 @@ export default function TodoForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex flex-col gap-2 rounded-2xl border border-line bg-surface p-3 shadow-card"
+      className="flex flex-col gap-2 rounded-md border border-line bg-surface p-3"
     >
-      {error && <p className="text-sm text-red-600 dark:text-red-400">{error}</p>}
+      {error && <p className="text-[14px] text-error">{error}</p>}
       <div className="flex flex-wrap items-center gap-2">
         <input
           value={title}
@@ -106,7 +106,7 @@ export default function TodoForm() {
         </select>
         <button
           type="submit"
-          className="rounded-lg bg-primary-600 px-3 py-2 text-sm font-medium text-white shadow-sm transition-colors hover:bg-primary-700"
+          className="flex h-12 items-center rounded-sm bg-primary px-6 text-[14px] font-medium text-white transition-colors hover:bg-primary-hover"
         >
           추가
         </button>

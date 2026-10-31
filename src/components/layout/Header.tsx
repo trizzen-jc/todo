@@ -3,7 +3,6 @@
 import { useEffect } from "react";
 import Image from "next/image";
 import { useAppStore } from "@/store";
-import ThemeToggle from "@/components/shared/ThemeToggle";
 
 export default function Header() {
   const { currentUser, authLoaded, fetchMe } = useAppStore();
@@ -13,44 +12,41 @@ export default function Header() {
   }, [fetchMe]);
 
   return (
-    <header className="flex h-14 shrink-0 items-center justify-between border-b border-line bg-surface px-4">
-      <span className="font-semibold tracking-tight text-foreground">
+    <header className="flex h-20 shrink-0 items-center justify-between border-b border-line bg-surface px-6">
+      <span className="text-[16px] font-semibold tracking-tight text-foreground">
         할일 + 목표 관리
       </span>
-      <div className="flex items-center gap-2">
-        <ThemeToggle />
-        {authLoaded && (
-          <div className="flex items-center gap-2 pl-1 text-sm">
-            {currentUser ? (
-              <>
-                {currentUser.avatarUrl && (
-                  <Image
-                    src={currentUser.avatarUrl}
-                    alt={currentUser.username}
-                    width={24}
-                    height={24}
-                    className="rounded-full ring-1 ring-line"
-                  />
-                )}
-                <span className="text-muted">{currentUser.username}</span>
-                <a
-                  href="/auth/logout"
-                  className="rounded-lg px-2 py-1 text-muted transition-colors hover:bg-foreground/5 hover:text-foreground"
-                >
-                  로그아웃
-                </a>
-              </>
-            ) : (
+      {authLoaded && (
+        <div className="flex items-center gap-3 text-sm">
+          {currentUser ? (
+            <>
+              {currentUser.avatarUrl && (
+                <Image
+                  src={currentUser.avatarUrl}
+                  alt={currentUser.username}
+                  width={32}
+                  height={32}
+                  className="rounded-full"
+                />
+              )}
+              <span className="text-foreground">{currentUser.username}</span>
               <a
-                href="/auth/github"
-                className="rounded-lg bg-primary-600 px-3 py-1.5 font-medium text-white shadow-sm transition-colors hover:bg-primary-700"
+                href="/auth/logout"
+                className="rounded-sm px-3 py-2 font-medium text-foreground transition-colors hover:bg-surface-soft"
               >
-                GitHub로 로그인
+                로그아웃
               </a>
-            )}
-          </div>
-        )}
-      </div>
+            </>
+          ) : (
+            <a
+              href="/auth/github"
+              className="flex h-12 items-center rounded-sm bg-primary px-6 text-[16px] font-medium text-white transition-colors hover:bg-primary-hover"
+            >
+              GitHub로 로그인
+            </a>
+          )}
+        </div>
+      )}
     </header>
   );
 }

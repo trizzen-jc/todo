@@ -1,8 +1,6 @@
 import type { Config } from "tailwindcss";
-import colors from "tailwindcss/colors";
 
 const config: Config = {
-  darkMode: "class",
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -14,9 +12,16 @@ const config: Config = {
         background: "var(--background)",
         foreground: "var(--foreground)",
         surface: "var(--surface)",
+        "surface-soft": "var(--surface-soft)",
+        "surface-strong": "var(--surface-strong)",
         muted: "var(--muted)",
         line: "var(--line)",
-        primary: colors.indigo,
+        primary: {
+          DEFAULT: "var(--primary)",
+          hover: "var(--primary-hover)",
+          disabled: "var(--primary-disabled)",
+        },
+        error: "var(--error)",
       },
       fontFamily: {
         sans: [
@@ -28,11 +33,13 @@ const config: Config = {
         ],
       },
       boxShadow: {
-        card: "0 1px 2px 0 rgb(15 23 42 / 0.06), 0 1px 3px 0 rgb(15 23 42 / 0.08)",
+        card: "0 0 0 1px rgb(0 0 0 / 0.02), 0 2px 6px 0 rgb(0 0 0 / 0.04), 0 4px 8px 0 rgb(0 0 0 / 0.1)",
       },
       borderRadius: {
-        xl: "0.875rem",
-        "2xl": "1.25rem",
+        sm: "8px",
+        md: "14px",
+        lg: "20px",
+        xl: "32px",
       },
     },
   },

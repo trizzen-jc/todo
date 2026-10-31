@@ -9,7 +9,7 @@ import ProgressBar from "@/components/shared/ProgressBar";
 import { formatDate } from "@/lib/utils";
 
 const textareaClass =
-  "rounded-lg border border-line bg-surface px-3 py-2 text-sm text-foreground placeholder:text-muted focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/20";
+  "rounded-sm border border-line bg-surface px-3 py-3 text-[14px] text-foreground placeholder:text-muted focus:border-2 focus:border-foreground focus:outline-none";
 
 export default function WeeklyDetailPage() {
   const params = useParams<{ id: string }>();
@@ -31,7 +31,7 @@ export default function WeeklyDetailPage() {
     }
   }, [plan]);
 
-  if (!plan) return <p className="text-sm text-muted">불러오는 중...</p>;
+  if (!plan) return <p className="text-[14px] text-muted">불러오는 중...</p>;
 
   const doneCount = plan.goals.filter((g) => g.done).length;
   const progress = plan.goals.length
@@ -41,10 +41,10 @@ export default function WeeklyDetailPage() {
   return (
     <div className="flex flex-col gap-6">
       <div>
-        <h1 className="text-xl font-semibold tracking-tight text-foreground">
+        <h1 className="text-[22px] font-medium tracking-tight text-foreground">
           {formatDate(plan.weekStart)} 주 계획
         </h1>
-        <p className="mt-1 text-sm text-muted">
+        <p className="mt-1 text-[14px] text-muted">
           진행률 {progress}% ({doneCount}/{plan.goals.length})
         </p>
         <div className="mt-2 max-w-xs">
@@ -52,8 +52,8 @@ export default function WeeklyDetailPage() {
         </div>
       </div>
 
-      <div className="flex flex-col gap-2 rounded-2xl border border-line bg-surface p-4 shadow-card">
-        <h2 className="text-sm font-medium text-muted">주간 목표</h2>
+      <div className="flex flex-col gap-2 rounded-md border border-line bg-surface p-4">
+        <h2 className="text-[14px] font-medium text-muted">주간 목표</h2>
         {plan.goals.map((g, i) => (
           <WeeklyGoalItem
             key={i}
@@ -64,12 +64,12 @@ export default function WeeklyDetailPage() {
       </div>
 
       <div className="flex flex-col gap-2">
-        <h2 className="text-sm font-medium text-muted">요일별 할일</h2>
+        <h2 className="text-[14px] font-medium text-muted">요일별 할일</h2>
         <WeekGrid weeklyPlanId={plan._id} />
       </div>
 
       <div className="flex flex-col gap-2">
-        <h2 className="text-sm font-medium text-muted">메모</h2>
+        <h2 className="text-[14px] font-medium text-muted">메모</h2>
         <textarea
           value={memo}
           onChange={(e) => setMemo(e.target.value)}
@@ -80,7 +80,7 @@ export default function WeeklyDetailPage() {
       </div>
 
       <div className="flex flex-col gap-2">
-        <h2 className="text-sm font-medium text-muted">주간 회고</h2>
+        <h2 className="text-[14px] font-medium text-muted">주간 회고</h2>
         <textarea
           value={retrospective}
           onChange={(e) => setRetrospective(e.target.value)}

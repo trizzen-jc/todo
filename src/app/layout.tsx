@@ -15,17 +15,6 @@ export const metadata: Metadata = {
   description: "할일, 주간 계획, 1년 목표를 연결하는 관리 앱",
 };
 
-const THEME_INIT_SCRIPT = `
-(function () {
-  try {
-    var stored = localStorage.getItem('theme');
-    var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    var dark = stored ? stored === 'dark' : prefersDark;
-    if (dark) document.documentElement.classList.add('dark');
-  } catch (e) {}
-})();
-`;
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -33,9 +22,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko" className={inter.variable}>
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
-      </head>
       <body className="font-sans antialiased">
         <div className="flex h-screen flex-col">
           <Header />

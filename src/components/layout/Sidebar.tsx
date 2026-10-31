@@ -25,10 +25,10 @@ export default function Sidebar() {
             <Link
               key={item.href}
               href={item.href}
-              className={`rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
+              className={`rounded-sm px-3 py-2.5 text-[14px] font-medium transition-colors ${
                 active
-                  ? "bg-primary-600 text-white shadow-sm"
-                  : "text-muted hover:bg-foreground/5 hover:text-foreground"
+                  ? "bg-surface-soft text-foreground"
+                  : "text-muted hover:bg-surface-soft hover:text-foreground"
               }`}
             >
               {item.label}
